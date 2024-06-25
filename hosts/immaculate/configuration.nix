@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../nixos_modules
+      inputs.home-manager.nixosModules.default
     ];
 
   # Bootloader.
@@ -53,20 +54,30 @@
   users.users.jthro = {
     isNormalUser = true;
     description = "Jethro Rosettenstein";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [];
   };
 
   home-manager = {
   	extraSpecialArgs = { inherit inputs; };
 	users = {
-		"jthro" = import ../../home.nix;
+		"jthro" = import ./home.nix;
 	};
   };
 
-  
   # Hyprland
   programs.hyprland.enable = true;
+
+  # rtkit is optional but recommended
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
 
   # Enable automatic login for the user.
   services.getty.autologinUser = "jthro";
@@ -80,8 +91,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
+    brightnessctl
   #  wget
   ];
 

@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+
+  imports = [
+    ../../home_manager_modules
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jthro";
@@ -65,7 +69,7 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/root/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/jthro/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
