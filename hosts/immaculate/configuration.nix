@@ -54,8 +54,9 @@
   users.users.jthro = {
     isNormalUser = true;
     description = "Jethro Rosettenstein";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
+    shell = pkgs.zsh;
   };
 
   home-manager = {
@@ -68,19 +69,11 @@
   # Hyprland
   programs.hyprland.enable = true;
 
-  # rtkit is optional but recommended
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-  };
+  # Zsh
+  programs.zsh.enable = true;
 
   # Enable automatic login for the user.
-  services.getty.autologinUser = "jthro";
+  # services.getty.autologinUser = "jthro";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -94,6 +87,7 @@
     # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
     brightnessctl
+    p7zip
   #  wget
   ];
 
@@ -116,6 +110,16 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  security.rtkit.enable = true;
+  services.pipewire = {
+  	enable = true;
+	alsa.enable = true;
+	alsa.support32Bit = true;
+	pulse.enable = true;
+	wireplumber.enable = true;
+  };
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
