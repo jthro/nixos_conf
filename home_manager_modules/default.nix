@@ -8,7 +8,6 @@
 		./shell/fastfetch.nix
 		./shell/zsh.nix
 		./shell/starship.nix
-		./web/firefox.nix
 		./media/mpv.nix
 		./desktop/wofi.nix
 		./desktop/waybar.nix
@@ -20,7 +19,6 @@
 	fastfetch.enable = true;
 	zsh.enable = true;
 	starship.enable = true;
-	firefox.enable = true;
 	mpv.enable = true;
 	wofi.enable = true;
 	waybar.enable = true;

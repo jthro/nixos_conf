@@ -14,7 +14,7 @@
 			enableZshIntegration = true;
 			settings = {
 				character = {
-					success_symbol = "[[♥](green) ❯](maroon)";
+					success_symbol = "[[](green) ❯](maroon)";
 					error_symbol = "[❯](red)";
 					vimcmd_symbol = "[❮](green)";
 				};
@@ -24,7 +24,7 @@
 					style = "bold lavender";
 				};
 
-				palette = "catppuccin_mocha";
+				palette = "catpuccin_mocha";
 				palettes.catpuccin_mocha = {
 					rosewater = "#f5e0dc";
 					flamingo = "#f2cdcd";

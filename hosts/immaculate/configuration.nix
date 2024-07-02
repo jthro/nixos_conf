@@ -54,7 +54,7 @@
   users.users.jthro = {
     isNormalUser = true;
     description = "Jethro Rosettenstein";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -67,7 +67,14 @@
   };
 
   # Hyprland
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+  	enable = true;
+	package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  };
+
+  # OpenTabletDriver
+  hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver.daemon.enable = true;
 
   # Zsh
   programs.zsh.enable = true;
@@ -88,6 +95,15 @@
     git
     brightnessctl
     p7zip
+    minicom
+    htop-vim
+    citrix_workspace
+    grimblast
+    slurp
+    swappy
+    floorp
+    krita
+    hyprpaper
   #  wget
   ];
 
@@ -111,6 +127,7 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  xdg.portal.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
   	enable = true;

@@ -110,6 +110,8 @@
 					normal = {
 						family = "JetBrains Mono Nerd Font";
 					};
+
+					size = 9;
 				};
 			};
 		};
